@@ -5,11 +5,12 @@
  *
  * Return: Always 0 (Success)
  */
-int main()
+int main(void)
 {
 	char julieth;
+
 	for (julieth = 'a'; julieth <= 'z'; julieth++)
 		putchar(julieth);
 	putchar('\n');
-	return 0;
+	return (0);
 }

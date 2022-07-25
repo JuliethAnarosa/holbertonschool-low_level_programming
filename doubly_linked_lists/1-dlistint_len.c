@@ -1,34 +1,17 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "lists.h"
 
 /**
- * main - check the code
+ * dlistint_len - Count the elements on a double linked list.
  *
- * Return: Always EXIT_SUCCESS.
+ * @h: The head of the linked list
+ *
+ * Return: Number of nodes
  */
-int main(void)
-{
-    dlistint_t *head;
-    dlistint_t *new;
-    dlistint_t hello = {8, NULL, NULL};
-    size_t n;
 
-    head = &hello;
-    new = malloc(sizeof(dlistint_t));
-    if (new == NULL)
-    {
-        dprintf(2, "Error: Can't malloc\n");
-        return (EXIT_FAILURE);
-    }
-    new->n = 9;
-    head->prev = new;
-    new->next = head;
-    new->prev = NULL;
-    head = new;
-    n = dlistint_len(head);
-    printf("-> %lu elements\n", n);
-    free(new);
-    return (EXIT_SUCCESS);
+size_t dlistint_len(const dlistint_t *h)
+{
+	if (h)
+		return (1 + dlistint_len(h->next));
+
+	return (0);
 }
